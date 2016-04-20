@@ -4,4 +4,4 @@ cd PeriscopeChallenge\src\cleanItHoower\
 
  - javac HoowerChallenge.java
  
- - java HoowerChallenge input.text
+ - java HoowerChallenge
