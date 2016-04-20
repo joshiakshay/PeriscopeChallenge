@@ -7,17 +7,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class HoowerChallenge {
-	public static void hoowerAndClean(int[][] grid, int[] initPos,
+	public static void hoowerAndClean(int[][] grid, int[] initPos,		//returns the final hoower position and number of patches cleaned
 			Queue<Character> instrQ) {
 		int cleanCounter = 0;
-		int currI = initPos[0];
-		int currJ = initPos[1];
+		int currI = initPos[0];											//current x co-ordinate
+		int currJ = initPos[1];											//current y co-ordinate
 		int currPos = grid[initPos[0]][initPos[1]];
 		if (currPos == -1) {
 			cleanCounter += 1;
 			grid[currI][currJ] = 0;
 		}
-		while (!instrQ.isEmpty()) {
+		while (!instrQ.isEmpty()) {										//Hoower moves based on Instructions
 			char instruction = instrQ.poll();
 			switch (instruction) {
 			case 'N':
@@ -65,14 +65,14 @@ public class HoowerChallenge {
 		System.out.println(cleanCounter);
 	}
 
-	public static int[] returnIntValues(String[] tempArr) {
+	public static int[] returnIntValues(String[] tempArr) {		//returns int array
 		int[] intArr = new int[tempArr.length];
 		intArr[0] = Integer.parseInt(tempArr[0]);
 		intArr[1] = Integer.parseInt(tempArr[1]);
 		return intArr;
 	}
 
-	public static String[] splitIntoArray(String str) {
+	public static String[] splitIntoArray(String str) {			//returns line as String Array
 		String[] tempArr = str.split("\\s+");
 		return tempArr;
 	}
@@ -89,11 +89,11 @@ public class HoowerChallenge {
 			String line = br.readLine();
 			while (line != null) {
 				String[] tempArr = splitIntoArray(line);
-				if (tempArr.length > 1) {
+				if (tempArr.length > 1) {						//the array is split into 2 on the basis of space
 					int[] dirtPoint = returnIntValues(tempArr);
 					grid[dirtPoint[0]][dirtPoint[1]] = -1;
 				} else {
-					String strInstr = line;
+					String strInstr = line;						//No spaces in line leads to only 1 split array -> Instruction set has started
 					for (int i = 0; i < strInstr.length(); i++)
 						instrQ.add(strInstr.charAt(i));
 				}
